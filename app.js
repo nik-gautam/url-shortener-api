@@ -7,6 +7,9 @@ require("dotenv").config();
 const urlRouter = require("./routes/url");
 const indexRouter = require("./routes");
 
+const MONGO_URI =
+    "mongodb+srv://nik:nik@cluster0-lngmy.mongodb.net/test?retryWrites=true&w=majority";
+
 const app = express();
 
 app.use(logger("dev"));
@@ -22,7 +25,7 @@ app.use("/", indexRouter);
 app.use("/api/url/", urlRouter);
 
 mongoose
-    .connect(process.env.MONGO_URI, {
+    .connect(MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

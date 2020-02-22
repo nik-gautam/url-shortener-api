@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const Url = require("../models/url");
 
+const BASE_URI = "http://www.octavemusic.tk";
+
 exports.getAddShortUrl = (req, res, next) => {
     let longUrl = req.query;
 
@@ -12,7 +14,7 @@ exports.getAddShortUrl = (req, res, next) => {
             console.log(result);
 
             if (!result) {
-                if (!validUrl.isUri(process.env.BASE_URI)) {
+                if (!validUrl.isUri(BASE_URI)) {
                     return res.status(401).json({
                         msg: "Invalid Base Url"
                     });
@@ -30,7 +32,7 @@ exports.getAddShortUrl = (req, res, next) => {
 
                 let url = new Url({
                     urlCode: code,
-                    shortUrl: process.env.BASE_URI + "/" + code,
+                    shortUrl: BASE_URI + "/" + code,
                     longUrl: longUrl.longurl
                 });
 
@@ -87,7 +89,7 @@ exports.getChangeCode = (req, res, next) => {
         if (!err) {
             if (result) {
                 result.urlCode = codes.new;
-                result.shortUrl = process.env.BASE_URI + "/" + codes.new;
+                result.shortUrl = BASE_URI + "/" + codes.new;
 
                 result
                     .save()
