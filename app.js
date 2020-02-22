@@ -24,6 +24,8 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/api/url/", urlRouter);
 
+var port = process.env.PORT || 6900;
+
 mongoose
     .connect(MONGO_URI, {
         useNewUrlParser: true,
@@ -31,7 +33,7 @@ mongoose
     })
     .then(result => {
         console.log("DB Connected!!");
-        app.listen(process.env.PORT || 6900);
+        app.listen(port);
     })
     .catch(err => {
         console.log(err);
