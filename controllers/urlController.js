@@ -1,6 +1,5 @@
 const validUrl = require("valid-url");
 const shortid = require("shortid");
-require("dotenv").config();
 
 const Url = require("../models/url");
 
