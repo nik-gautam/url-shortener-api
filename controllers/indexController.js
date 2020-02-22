@@ -20,3 +20,9 @@ exports.getIndex = (req, res, next) => {
         }
     });
 };
+
+exports.getInit = (req, res, next) => {
+    return res.send(
+        "<h1> Welcome to Octave Music Society... Website Under Construction</h1>"
+    );
+};
